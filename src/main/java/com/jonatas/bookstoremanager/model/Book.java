@@ -22,7 +22,7 @@ public class Book {
     private String name;
 
     @Column(nullable = false)
-    private Integer page;
+    private Integer pages;
 
     @Column(nullable = false)
     private Integer chapters;
@@ -31,7 +31,7 @@ public class Book {
     private String isbn;
 
     @Column(nullable = false, name = "publisher_name", unique = true)
-    private String publicherName;
+    private String publisherName;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "author_id")
