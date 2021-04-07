@@ -33,8 +33,11 @@ public class Book {
     @Column(nullable = false, name = "publisher_name", unique = true)
     private String publisherName;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL /*{CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}*/)
     @JoinColumn(name = "author_id")
     private Author author;
 
+    public Long getId() {
+        return id;
+    }
 }

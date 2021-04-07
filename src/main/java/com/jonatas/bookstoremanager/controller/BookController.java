@@ -1,6 +1,7 @@
 package com.jonatas.bookstoremanager.controller;
 
 import com.jonatas.bookstoremanager.model.Book;
+import com.jonatas.bookstoremanager.model.dto.BookDTO;
 import com.jonatas.bookstoremanager.model.dto.MessageResponseDTO;
 import com.jonatas.bookstoremanager.repository.BookRepository;
 import com.jonatas.bookstoremanager.service.BookService;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -23,8 +26,8 @@ public class BookController {
     }
 
     @PostMapping
-    public MessageResponseDTO create(@RequestBody Book book){
-        return bookService.create(book);
+    public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO){
+        return bookService.create(bookDTO);
     }
 
 
